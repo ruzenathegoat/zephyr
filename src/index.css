@@ -1,0 +1,301 @@
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans:wght@500;600&family=Montserrat:wght@400;600&family=Space+Mono:wght@400;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #003bff;
+  --color-primary-hover: #002fd1;
+  --color-primary-active: #0027ad;
+  --color-secondary: rgba(0, 0, 0, 0.72);
+  --color-secondary-hover: #000000;
+  --color-canvas: #ffffff;
+  --color-surface: #ffffff;
+  --color-surface-soft: #f5f5f3;
+  --color-surface-hover: #ecece9;
+  --color-ink: #000000;
+  --color-signal: #003bff;
+  --color-text-primary: #000000;
+  --color-text-secondary: rgba(0, 0, 0, 0.72);
+  --color-text-tertiary: rgba(0, 0, 0, 0.58);
+  --color-text-on-primary: #ffffff;
+  --color-dark-muted: rgba(255, 255, 255, 0.72);
+  --color-border: rgba(0, 0, 0, 0.16);
+  --color-border-strong: rgba(0, 0, 0, 0.38);
+  --color-focus-ring: #003bff;
+  --color-disabled-bg: #f5f5f3;
+  --color-disabled-text: rgba(0, 0, 0, 0.46);
+  --color-disabled-border: rgba(0, 0, 0, 0.16);
+  --color-dither-light: #ffffff;
+  --color-dither-dark: #000000;
+
+  --font-sans: "Montserrat", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "Space Mono", "SFMono-Regular", Consolas, monospace;
+  --font-display: "Encode Sans", "Helvetica Neue", Arial, sans-serif;
+
+  --breakpoint-tablet: 48rem;
+  --breakpoint-desktop: 75rem;
+  --breakpoint-wide: 100rem;
+
+  --ease-zephyr: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-zephyr-enter: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-out-snappy: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-dither: steps(6, end);
+}
+
+:root {
+  --container-zephyr: 100rem;
+  --measure-body: 65ch;
+  --measure-intro: 52ch;
+  --measure-caption: 42ch;
+  --duration-tight-stagger: 40ms;
+  --duration-stagger: 60ms;
+  --duration-instant: 100ms;
+  --duration-fast: 150ms;
+  --duration-exit: 180ms;
+  --duration-base: 240ms;
+  --duration-enter: 300ms;
+  --duration-slow: 400ms;
+  --zephyr-white: #ffffff;
+  --zephyr-black: #000000;
+  --zephyr-blue: #003bff;
+  --zephyr-surface: #f5f5f3;
+  --zephyr-border: rgba(0, 0, 0, 0.16);
+  --zephyr-border-strong: rgba(0, 0, 0, 0.38);
+  --zephyr-text-muted: rgba(0, 0, 0, 0.62);
+  --zephyr-text-subtle: rgba(0, 0, 0, 0.46);
+  --radius-none: 0;
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+}
+
+html {
+  background: var(--zephyr-white);
+  overflow-x: clip;
+  scroll-padding-top: 4rem;
+}
+
+@keyframes zephyr-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.dither-mask-transition {
+  mask-image: linear-gradient(to right, black 100%, transparent 0%);
+  mask-size: 100% 100%;
+}
+
+.dither-mask-hidden {
+  mask-image: linear-gradient(to right, black 0%, transparent 0%);
+}
+
+.dither-mask-reveal {
+  animation: dither-wipe var(--duration-slow) var(--ease-dither) forwards;
+}
+
+@keyframes dither-wipe {
+  from {
+    mask-image: linear-gradient(to right, black 0%, transparent 0%);
+  }
+  to {
+    mask-image: linear-gradient(to right, black 100%, transparent 0%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 1ms !important;
+    animation-delay: 0ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+  }
+}
+
+body {
+  background-color: var(--color-canvas);
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
+  font-kerning: normal;
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--zephyr-blue);
+  color: var(--zephyr-white);
+}
+
+:focus-visible {
+  outline: 2px solid var(--zephyr-blue);
+  outline-offset: 3px;
+}
+
+.display-heading {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 0.92;
+  letter-spacing: -0.035em;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+
+.btn-tactile {
+  transition: transform 160ms var(--ease-out-snappy), background-color 160ms ease;
+}
+
+.btn-tactile:active {
+  transform: scale(0.97);
+}
+
+.technical-label {
+  font-family: var(--font-mono);
+  font-size: clamp(0.625rem, 0.7vw, 0.75rem);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.body-copy {
+  max-width: var(--measure-body);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  letter-spacing: -0.01em;
+  text-wrap: pretty;
+}
+
+.structural-rule {
+  height: 1px;
+  background: var(--zephyr-border);
+}
+
+.mobile-sheet[data-state='open'] {
+  animation: sheet-enter 320ms var(--ease-zephyr) both;
+}
+
+.mobile-sheet[data-state='closed'] {
+  animation: sheet-exit 200ms ease-out both;
+}
+
+@keyframes sheet-enter {
+  from {
+    opacity: 0;
+    transform: translateY(-1rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes sheet-exit {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-0.5rem);
+  }
+}
+
+.dialog-overlay[data-state='open'] {
+  animation: dialog-fade-in 200ms ease-out both;
+}
+
+.dialog-overlay[data-state='closed'] {
+  animation: dialog-fade-out 150ms ease-in both;
+}
+
+.dialog-card[data-state='open'],
+.dialog-content[data-state='open'] {
+  animation: dialog-scale-in 240ms var(--ease-out-snappy) both;
+}
+
+.dialog-card[data-state='closed'],
+.dialog-content[data-state='closed'] {
+  animation: dialog-scale-out 160ms ease-in both;
+}
+
+@keyframes dialog-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes dialog-fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes dialog-scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes dialog-scale-out {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+}
+
+.method-content[data-state='open'] {
+  animation: method-open 300ms var(--ease-out-snappy) both;
+}
+
+.method-content[data-state='closed'] {
+  animation: method-close 200ms ease-out both;
+}
+
+@keyframes method-open {
+  from {
+    height: 0;
+    opacity: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+    opacity: 1;
+  }
+}
+
+@keyframes method-close {
+  from {
+    height: var(--radix-accordion-content-height);
+    opacity: 1;
+  }
+  to {
+    height: 0;
+    opacity: 0;
+  }
+}
+
+.font-mono {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1, "zero" 1;
+}
+
+.panel-grid {
+  display: grid;
+  gap: 1px;
+  background: var(--color-border);
+}
+
+.panel-grid > * {
+  background: var(--color-surface);
+}
