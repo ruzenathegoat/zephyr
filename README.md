@@ -2,16 +2,16 @@
 
 <div align="center">
 
+[![Live Deployment](https://img.shields.io/badge/Vercel-Live%20Demo-000000?style=flat&logo=vercel&logoColor=white)](https://zephyr-three-xi.vercel.app/)
 [![React](https://img.shields.io/badge/React-19.x-61DAFB?style=flat&logo=react&logoColor=black)](https://react.dev/)
 [![Vite](https://img.shields.io/badge/Vite-8.x-646CFF?style=flat&logo=vite&logoColor=white)](https://vitejs.dev/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v4-06B6D4?style=flat&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
 [![Motion](https://img.shields.io/badge/Motion-v13-EA4C89?style=flat&logo=framer&logoColor=white)](https://motion.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?style=flat&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![License](https://img.shields.io/badge/License-Private-black?style=flat)](#license)
 
 **Utility-scale direct-drive offshore wind platforms engineered for predictable baseload power in the world’s harshest marine environments.**
 
-[Live Preview](#getting-started) · [Architecture](#platform-architecture) · [Documentation Portal](#technical-documentation-portal) · [Design System](#design-philosophy)
+[🌐 **Explore Live Demo**](https://zephyr-three-xi.vercel.app/) · [Platform Architecture](#key-features--interactive-systems) · [Documentation Portal](https://zephyr-three-xi.vercel.app/#docs) · [Design System](#design-philosophy--aesthetic-foundation)
 
 </div>
 
@@ -20,6 +20,9 @@
 ## Overview
 
 **Zephyr** is a modern, high-performance company profile and technical engineering portal for an industrial marine energy enterprise. Built with a **Swiss Industrial Editorial** design philosophy, it blends brutalist structural clarity with cutting-edge interactive SVG vector simulations, physical kinematics, and an integrated engineering documentation system.
+
+- **Live Production URL**: [https://zephyr-three-xi.vercel.app/](https://zephyr-three-xi.vercel.app/)
+- **Technical Documentation Dossier**: [https://zephyr-three-xi.vercel.app/#docs](https://zephyr-three-xi.vercel.app/#docs)
 
 ---
 
@@ -31,7 +34,7 @@
 - **Deepwater Monopile Structural Profile (03)**: Marine engineering depth profile illustrating $\varnothing 10.5\text{m}$ steel monopile embedment through geological strata (clay/till to chalk/rock) with scour protection and animated wave kinematics.
 - **Optical SCADA Sensor Array (04)**: Dynamic fiber-optic network topology with 10 sensor nodes, live data packet routing, and real-time pulse rings.
 
-### 2"Trusted by Industry Leaders" Interactive Marquee
+### 2. "Trusted by Industry Leaders" Interactive Marquee
 - High-performance, hardware-accelerated infinite horizontal marquee driven by the **Web Animations API**.
 - Clean inline SVG partner logomarks (**Shell, Siemens Gamesa, Ørsted, DNV, Equinor, Vattenfall, RWE, TenneT**).
 - Gentle hover deceleration (slows down to 12% speed) and reveals role descriptors.
@@ -42,12 +45,12 @@
 
 ### 4. Active Fleet Portfolio & Modal Spec Inspector
 - Flagship projects (*Vanguard Alpha Array, Øresund Stream, Atlantic Ridge, Dogger Bank Extension*).
-- Compact, responsive 2-column modal detail inspector with comprehensive engineering specifications (annual yield, foundation type, turbine model, environmental compliance).
+- Compact, responsive 2-column modal detail inspector with comprehensive engineering specifications (annual yield, foundation type, turbine model, environmental compliance) and Lenis scroll prevention.
 
 ### 5. 4-Stage Marine Deployment Lifecycle Simulator
 - Interactive engineering sequence from **01 Site Assessment**, **02 System Design**, **03 Marine Deployment**, to **04 Asset Operations** with synchronized technical SVGs.
 
-### 6.  Dedicated Technical Documentation & Compliance Portal
+### 6. Dedicated Technical Documentation & Compliance Portal
 - Complete standalone documentation reader accessible via `#docs` or the **`Docs ↗`** header/footer links.
 - Instant search filter, structured specifications matrix, and 5 comprehensive engineering dossiers:
   1. *Platform Engineering & Z-Class Architecture*
@@ -83,7 +86,7 @@
 | **Motion & Physics** | [Motion](https://motion.dev/) + Native `requestAnimationFrame` + Web Animations API |
 | **Components & Modals** | [@radix-ui/react-dialog](https://www.radix-ui.com/primitives/docs/components/dialog) |
 | **Smooth Scrolling** | [Lenis Smooth Scroll](https://github.com/darkroomengineering/lenis) |
-| **Icons** | [Lucide React](https://lucide.dev/) (Restricted to functional actions) |
+| **Deployment** | [Vercel](https://vercel.com/) |
 
 ---
 
@@ -97,7 +100,7 @@
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/your-username/zephyr.git
+   git clone https://github.com/ruzenathegoat/zephyr.git
    cd zephyr
    ```
 
@@ -128,7 +131,7 @@
 
 ```text
 zephyr/
-├── public/                     # Static assets & favicons
+├── public/                     # Static assets, official cubic favicon & icons
 ├── src/
 │   ├── assets/                 # High-resolution photographic plates & media
 │   ├── components/
@@ -160,32 +163,6 @@ zephyr/
 ├── package.json
 ├── tsconfig.json
 └── vite.config.ts
-```
-
----
-
-## 🚢 Git Push Instructions
-
-To push this codebase to a new GitHub repository:
-
-```bash
-# 1. Initialize git repository
-git init
-
-# 2. Stage all files
-git add .
-
-# 3. Commit initial release
-git commit -m "feat: initial release of Zephyr offshore wind energy company profile"
-
-# 4. Set main branch
-git branch -M main
-
-# 5. Link to your GitHub remote repository
-git remote add origin https://github.com/<your-username>/<your-repo-name>.git
-
-# 6. Push to GitHub
-git push -u origin main
 ```
 
 ---
