@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import { X, ArrowUpRight, Download, ShieldCheck, Zap, Waves, Activity } from 'lucide-react';
+import { useSmoothScroll } from '../providers/smoothScrollContext';
 
 export interface ProjectData {
   code: string;
@@ -32,6 +33,24 @@ interface ProjectDetailsModalProps {
 }
 
 export function ProjectDetailsModal({ project, isOpen, onClose }: ProjectDetailsModalProps) {
+  const { stopScrolling, startScrolling } = useSmoothScroll();
+
+  // Scroll prevent for both Lenis smooth scrolling and native document body
+  useEffect(() => {
+    if (isOpen) {
+      stopScrolling();
+      document.body.style.overflow = 'hidden';
+    } else {
+      startScrolling();
+      document.body.style.overflow = '';
+    }
+
+    return () => {
+      startScrolling();
+      document.body.style.overflow = '';
+    };
+  }, [isOpen, startScrolling, stopScrolling]);
+
   if (!project) return null;
 
   const details = project.details || {
@@ -53,12 +72,12 @@ export function ProjectDetailsModal({ project, isOpen, onClose }: ProjectDetails
   return (
     <Dialog.Root open={isOpen} onOpenChange={(open) => !open && onClose()}>
       <Dialog.Portal>
-        {/* Overlay backdrop */}
-        <Dialog.Overlay className="dialog-overlay fixed inset-0 z-[100] bg-black/65 backdrop-blur-sm" />
+        {/* Overlay backdrop with overscroll contain */}
+        <Dialog.Overlay className="dialog-overlay fixed inset-0 z-[100] bg-black/65 backdrop-blur-sm overscroll-contain" />
 
-        {/* Centered Scrollable Viewport Wrapper */}
-        <div className="fixed inset-0 z-[101] flex items-center justify-center overflow-y-auto p-3 sm:p-5 md:p-6">
-          <Dialog.Content className="dialog-card relative my-auto flex max-h-[88vh] w-full max-w-4xl flex-col overflow-hidden border border-border-strong bg-white shadow-2xl focus:outline-none">
+        {/* Centered Scrollable Viewport Wrapper with scroll containment */}
+        <div className="fixed inset-0 z-[101] flex items-center justify-center overflow-y-auto overscroll-contain p-3 sm:p-5 md:p-6">
+          <Dialog.Content className="dialog-card relative my-auto flex max-h-[88vh] w-full max-w-4xl flex-col overflow-hidden border border-border-strong bg-white shadow-2xl focus:outline-none overscroll-contain">
             
             {/* 1. Header Bar (Fixed at Top) */}
             <div className="flex shrink-0 items-center justify-between border-b border-border bg-white px-5 py-3.5 sm:px-6">
@@ -79,7 +98,7 @@ export function ProjectDetailsModal({ project, isOpen, onClose }: ProjectDetails
             </div>
 
             {/* 2. Scrollable Modal Body: Compact 2-Column on Desktop */}
-            <div className="overflow-y-auto p-5 sm:p-6 md:p-7">
+            <div className="overflow-y-auto overscroll-contain p-5 sm:p-6 md:p-7">
               <div className="grid grid-cols-1 gap-6 md:grid-cols-12 md:gap-7">
                 
                 {/* Left Column: Image, Metric Badges, Fact Sheet Action (5 cols) */}
